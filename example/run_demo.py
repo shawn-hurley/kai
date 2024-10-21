@@ -14,7 +14,7 @@ import requests
 # Ensure that we have 'kai' in our import path
 sys.path.append("../../kai")
 from kai.analyzer_types import ExtendedIncident, Report
-from kai.kai_logging import formatter
+from kai.logging.kai_logging import formatter
 from kai_solution_server.routes.get_incident_solutions_for_file import (
     PostGetIncidentSolutionsForFileParams,
 )

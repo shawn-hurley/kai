@@ -17,6 +17,7 @@ from langchain_core.messages import AIMessage, HumanMessage, SystemMessage
 
 from kai.reactive_codeplanner.agent.api import Agent, AgentRequest, AgentResult
 from kai.reactive_codeplanner.agent.ast_diff.parser import Language, extract_ast_info
+from kai.logging.kai_trace import KaiTrace
 
 
 @dataclass
@@ -125,6 +126,7 @@ Here's the input information:
     def __init__(
         self,
         llm: BaseChatModel,
+        trace: KaiTrace,
         iterations: int = 1,
         retries: int = 1,
         silent: bool = True,
@@ -133,6 +135,7 @@ Here's the input information:
         self._iterations = iterations
         self._retries = retries
         self._silent = silent
+        self.trace = trace
 
     def execute(self, task: AgentRequest) -> AgentResult:
         if not isinstance(task, ReflectionTask):

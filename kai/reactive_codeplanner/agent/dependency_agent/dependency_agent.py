@@ -4,6 +4,8 @@
 # so that we can hook into the parser and add attributes to the element.
 import sys
 
+from kai.logging.kai_trace import KaiTrace
+
 sys.modules["_elementtree"] = None  # type: ignore[assignment]
 
 import logging
@@ -183,12 +185,14 @@ Message:{message}
         self,
         llm: BaseChatModel,
         project_base: Path,
+        trace: KaiTrace,
         retries: int = 1,
     ) -> None:
         self.__llm = llm
         self._retries = retries
-        self.child_agent = FQDNDependencySelectorAgent(llm=llm)
+        self.child_agent = FQDNDependencySelectorAgent(llm=llm, trace=trace)
         self.agent_methods.update({"find_in_pom._run": find_in_pom(project_base)})
+        self.trace = trace
 
     def execute(self, ask: AgentRequest) -> AgentResult:
         if not isinstance(ask, MavenDependencyRequest):
@@ -256,8 +260,9 @@ Message:{message}
                                 times=0,
                             )
                         )
-                        logger.debug("result from dependent agent: %r", r)
                         maven_search = r.response
+                        if not r.response:
+                            logger.debug("unable to get response from sub-agent")
                     else:
                         maven_search = result
 

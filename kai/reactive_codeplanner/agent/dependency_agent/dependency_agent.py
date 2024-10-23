@@ -16,7 +16,7 @@ from langchain.prompts.chat import HumanMessagePromptTemplate
 from langchain_core.language_models.chat_models import BaseChatModel
 from langchain_core.messages import SystemMessage
 
-from kai.logging.kai_logging import get_logger
+from kai.logging.logging import get_logger
 from kai.reactive_codeplanner.agent.api import Agent, AgentRequest, AgentResult
 from kai.reactive_codeplanner.agent.dependency_agent.api import (
     FindInPomResponse,

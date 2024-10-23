@@ -5,8 +5,8 @@ from jinja2 import Template
 from langchain_core.language_models.chat_models import BaseChatModel
 from langchain_core.messages import HumanMessage
 
-from kai.logging.kai_logging import get_logger
 from kai.logging.kai_trace import KaiTrace
+from kai.logging.logging import get_logger
 from kai.reactive_codeplanner.agent.api import Agent, AgentRequest, AgentResult
 from kai.reactive_codeplanner.agent.dependency_agent.api import FQDNResponse
 from kai.reactive_codeplanner.agent.dependency_agent.util import (

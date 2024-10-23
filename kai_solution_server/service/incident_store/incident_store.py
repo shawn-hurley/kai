@@ -15,7 +15,7 @@ from sqlalchemy.orm.attributes import flag_modified
 from kai.analyzer_types import Report, filter_incident_vars
 from kai.constants import PATH_GIT_ROOT, PATH_LOCAL_REPO
 from kai.kai_config import KaiConfig
-from kai.logging.kai_logging import get_logger
+from kai.logging.logging import get_logger
 from kai_solution_server.service.incident_store.backend import (
     IncidentStoreBackend,
     incident_store_backend_factory,

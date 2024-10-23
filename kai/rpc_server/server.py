@@ -15,7 +15,7 @@ from kai.jsonrpc.logs import JsonRpcLoggingHandler
 from kai.jsonrpc.models import JsonRpcError, JsonRpcErrorCode, JsonRpcId
 from kai.jsonrpc.util import DEFAULT_FORMATTER, TRACE, CamelCaseBaseModel
 from kai.kai_config import KaiConfigModels
-from kai.logging.kai_logging import get_logger
+from kai.logging.logging import get_logger
 from kai.reactive_codeplanner.agent.dependency_agent.dependency_agent import (
     MavenDependencyAgent,
 )

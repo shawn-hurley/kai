@@ -15,7 +15,6 @@ import requests
 sys.path.append("../../kai")
 from kai.analyzer_types import ExtendedIncident, Report
 from kai.logging.logging import formatter
-from kai_solution_server.routes.get_solutions import PostGetSolutionsParams
 
 KAI_LOG = logging.getLogger(__name__)
 

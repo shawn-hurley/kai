@@ -5,7 +5,6 @@ from jinja2 import Template
 from langchain_core.language_models.chat_models import BaseChatModel
 from langchain_core.messages import HumanMessage
 
-from kai.logging.kai_trace import KaiTrace
 from kai.logging.logging import get_logger
 from kai.reactive_codeplanner.agent.api import Agent, AgentRequest, AgentResult
 from kai.reactive_codeplanner.agent.dependency_agent.api import FQDNResponse
@@ -38,9 +37,8 @@ class FQDNDependencySelectorAgent(Agent):
         group_id: str
         reasoning: str
 
-    def __init__(self, llm: BaseChatModel, trace: KaiTrace) -> None:
+    def __init__(self, llm: BaseChatModel) -> None:
         self.__llm = llm
-        self.trace = trace
 
     message = Template(
         """
